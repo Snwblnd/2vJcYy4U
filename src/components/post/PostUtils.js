@@ -106,3 +106,28 @@ export const commentInit = () => {
 
   return comments;
 };
+
+export const clearComments = () => {
+  localStorage.removeItem("ranOnce");
+  localStorage.removeItem("comments");
+  localStorage.removeItem("idCounter");
+
+  commentInit();
+  window.dispatchEvent(new CustomEvent("updateList"));
+};
+
+export const addComment = (commentText) => {
+  const commentId = Number(localStorage.getItem("idCounter")) + 1;
+  const newComment = {
+    commentId,
+    commentText,
+    isDeleted: false,
+  };
+
+  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+  comments.push(newComment);
+
+  updateComments(comments);
+  localStorage.setItem("idCounter", commentId);
+};

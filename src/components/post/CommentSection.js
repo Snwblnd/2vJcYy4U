@@ -2,10 +2,16 @@ import Comment from "./Comment";
 import CommentInput from "./CommentInput";
 import "./post.css";
 import { useEffect, useState } from "react";
-import { commentInit, commentsLoader } from "./PostUtils";
+import {
+  commentInit,
+  commentsLoader,
+  clearComments,
+  addComment,
+} from "./PostUtils";
 
 const CommentSection = () => {
   const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     commentInit();
@@ -36,7 +42,14 @@ const CommentSection = () => {
           return <Comment key={comment.commentId} comment={comment} />;
         })}
       </div>
-      <CommentInput />
+      <CommentInput
+        replyFunction={addComment}
+        comment={comment}
+        setComment={setComment}
+      />
+      <button className="reset-comments-button" onClick={() => clearComments()}>
+        Reset comment section
+      </button>
     </div>
   );
 };
