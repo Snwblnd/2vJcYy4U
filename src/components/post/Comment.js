@@ -4,7 +4,6 @@ import { commentSetter } from "./CommentSection";
 const Comment = ({ comment }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const newComment = commentSetter({ comment });
   return (
     <div className="comment">
       <div className="comment-text">
