@@ -1,10 +1,30 @@
 import Comment from "./Comment";
 import CommentInput from "./CommentInput";
 import "./post.css";
+import { useEffect, useState } from "react";
 
 const CommentSection = () => {
-  commentInit();
-  const comments = commentsLoader();
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    commentInit();
+    loadComments();
+
+    const handleUpdateList = () => {
+      loadComments();
+    };
+
+    window.addEventListener("updateList", handleUpdateList);
+
+    return () => {
+      window.removeEventListener("updateList", handleUpdateList);
+    };
+  }, []);
+
+  const loadComments = () => {
+    const loadedComments = commentsLoader();
+    setComments(loadedComments || []);
+  };
 
   return (
     <div className="comment-section">

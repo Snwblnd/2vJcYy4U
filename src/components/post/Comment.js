@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { commentSetter } from "./CommentSection";
 
 const Comment = ({ comment }) => {
   const [expanded, setExpanded] = useState(false);
@@ -57,6 +56,8 @@ const deleteFunction = (comment) => {
   localStorage.removeItem("comments");
 
   localStorage.setItem("comments", JSON.stringify(comments));
+
+  window.dispatchEvent(new CustomEvent("updateList"));
 };
 
 export default Comment;
