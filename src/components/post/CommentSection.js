@@ -68,7 +68,7 @@ const commentInit = () => {
         {
           commentId: 3,
           commentText: "i agree!",
-          isDeleted: true,
+          isDeleted: false,
           comments: [
             {
               commentId: 5,
@@ -91,6 +91,7 @@ const commentInit = () => {
     },
   ];
 
+  localStorage.setItem("idCounter", 5);
   localStorage.setItem("comments", JSON.stringify(comments));
   localStorage.setItem("ranOnce", true);
 
