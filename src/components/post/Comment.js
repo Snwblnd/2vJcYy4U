@@ -24,8 +24,8 @@ const Comment = ({ comment }) => {
         {expanded
           ? comment.comments.map((comment) => {
               return (
-                <div className="reply">
-                  <Comment comment={comment} key={comment.commentId} />
+                <div className="reply" key={comment.commentId}>
+                  <Comment comment={comment} />
                 </div>
               );
             })
