@@ -14,9 +14,16 @@ const Comment = ({ comment }) => {
       </div>
       <div className="replies">
         {comment.comments && (
-          <button onClick={() => setExpanded(!expanded)}>
-            {expanded ? "Hide replies" : "Show replies"}
-          </button>
+          <div>
+            <button onClick={() => setExpanded(!expanded)}>
+              {expanded ? "Hide replies" : "Show replies"}
+            </button>
+            {expanded
+              ? comment.comments.map((comment) => {
+                  return <Comment comment={comment} key={comment.commentId} />;
+                })
+              : ""}
+          </div>
         )}
       </div>
       <button>Delete</button>
