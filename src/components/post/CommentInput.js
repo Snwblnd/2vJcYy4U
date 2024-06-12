@@ -1,5 +1,7 @@
+import "./post.css";
+
 const CommentInput = () => {
-  return <div>Comment Input</div>;
+  return <div className="comment-input">Comment Input</div>;
 };
 
 export default CommentInput;

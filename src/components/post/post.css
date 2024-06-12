@@ -1,7 +1,46 @@
 .post-content {
   border: 1px solid red;
+  width: 48rem;
+  height: 48rem;
+  padding: 1rem;
 }
 
 .post-container {
   border: 1px solid green;
+  display: flex;
+}
+
+.comment-section {
+  border: 1px yellow solid;
+  width: 32rem;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+}
+
+.comment {
+  padding: 8px;
+}
+
+.comments {
+  border: 1px solid orange;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.replies {
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+}
+
+.reply {
+  border: 1px solid gray;
+  padding-left: 1rem;
+}
+
+.comment-input {
+  border: 1px solid blue;
+  margin-top: auto;
 }

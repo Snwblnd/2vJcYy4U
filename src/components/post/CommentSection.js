@@ -28,6 +28,7 @@ const CommentSection = () => {
 
   return (
     <div className="comment-section">
+      <h1>Comments</h1>
       <div className="comments">
         {comments.map((comment) => {
           console.log(comment);

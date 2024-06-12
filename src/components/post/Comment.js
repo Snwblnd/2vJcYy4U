@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./post.css";
 
 const Comment = ({ comment }) => {
   const [expanded, setExpanded] = useState(false);
@@ -11,22 +12,24 @@ const Comment = ({ comment }) => {
           <p>{comment.commentText}</p>
         )}
       </div>
-      <div className="replies">
-        {comment.comments && (
-          <div>
-            <button onClick={() => setExpanded(!expanded)}>
-              {expanded ? "Hide replies" : "Show replies"}
-            </button>
-            {expanded
-              ? comment.comments.map((comment) => {
-                  return <Comment comment={comment} key={comment.commentId} />;
-                })
-              : ""}
-          </div>
-        )}
-      </div>
       <button onClick={() => deleteFunction(comment)}>Delete</button>
       <button onClick={() => replyToComment(comment, "darude")}>Reply</button>
+      {comment.comments && (
+        <button onClick={() => setExpanded(!expanded)}>
+          {expanded ? "Hide replies" : "Show replies"}
+        </button>
+      )}
+      <div className="replies">
+        {expanded
+          ? comment.comments.map((comment) => {
+              return (
+                <div className="reply">
+                  <Comment comment={comment} key={comment.commentId} />
+                </div>
+              );
+            })
+          : ""}
+      </div>
     </div>
   );
 };
