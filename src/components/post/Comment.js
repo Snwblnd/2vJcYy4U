@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { commentSetter } from "./CommentSection";
 
 const Comment = ({ comment }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const newComment = commentSetter({ comment });
   return (
     <div className="comment">
       <div className="comment-text">
@@ -27,6 +29,7 @@ const Comment = ({ comment }) => {
         )}
       </div>
       <button>Delete</button>
+      <button>Reply</button>
     </div>
   );
 };

@@ -3,7 +3,8 @@ import CommentInput from "./CommentInput";
 import "./post.css";
 
 const CommentSection = () => {
-  const comments = commentLoader();
+  commentInit();
+  const comments = commentsLoader();
 
   return (
     <div className="comment-section">
@@ -20,7 +21,24 @@ const CommentSection = () => {
 
 export default CommentSection;
 
-const commentLoader = () => {
+export const commentSetter = ({ comment }) => {
+  const commentId = Number(localStorage.getItem("idCounter")) + 1;
+  localStorage.setItem(commentId, JSON.stringify(comment));
+};
+
+const commentsLoader = () => {
+  const comments = localStorage.getItem("comments");
+
+  return JSON.parse(comments);
+};
+
+const commentInit = () => {
+  const ranOnce = localStorage.getItem("ranOnce");
+
+  if (ranOnce === "true") return;
+
+  localStorage.removeItem("comments");
+
   const comments = [
     {
       commentId: 1,
@@ -30,7 +48,7 @@ const commentLoader = () => {
         {
           commentId: 3,
           commentText: "i agree!",
-          isDeleted: false,
+          isDeleted: true,
           comments: [
             {
               commentId: 5,
@@ -52,6 +70,9 @@ const commentLoader = () => {
       isDeleted: false,
     },
   ];
+
+  localStorage.setItem("comments", JSON.stringify(comments));
+  localStorage.setItem("ranOnce", true);
 
   return comments;
 };
