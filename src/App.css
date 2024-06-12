@@ -3,4 +3,5 @@
   width: 100%;
   display: grid;
   place-content: center;
+  background-color: #eeeeee;
 }

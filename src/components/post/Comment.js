@@ -10,32 +10,48 @@ const Comment = ({ comment }) => {
 
   const handleReply = () => {
     replyToComment(comment, reply);
+    setReply("");
+    setShowReply(false);
+    setExpanded(true);
   };
 
   return (
     <div className="comment">
       <div className="comment-text">
         {comment.isDeleted ? (
-          <p>This comment has been deleted</p>
+          <p className="deleted">This comment has been deleted</p>
         ) : (
           <p>{comment.commentText}</p>
         )}
       </div>
-      <button onClick={() => deleteFunction(comment)}>Delete</button>
-      <button onClick={() => setShowReply(!showReply)}>
-        {showReply ? "Cancel" : "Reply"}
-      </button>
+      <div className="comment-buttons">
+        {comment.comments && (
+          <button
+            className="comment-button"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "Hide replies" : "Show replies"}
+          </button>
+        )}
+        <button
+          className="comment-button "
+          onClick={() => setShowReply(!showReply)}
+        >
+          {showReply ? "Cancel" : "Reply"}
+        </button>
+        <button
+          className="comment-button "
+          onClick={() => deleteFunction(comment)}
+        >
+          Delete
+        </button>
+      </div>
       {showReply && (
         <CommentInput
           replyFunction={handleReply}
           comment={reply}
           setComment={setReply}
         />
-      )}
-      {comment.comments && (
-        <button onClick={() => setExpanded(!expanded)}>
-          {expanded ? "Hide replies" : "Show replies"}
-        </button>
       )}
       <div className="replies">
         {expanded

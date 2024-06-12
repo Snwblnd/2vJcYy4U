@@ -88,7 +88,7 @@ export const commentInit = () => {
         },
         {
           commentId: 4,
-          commentText: "this looks great!",
+          commentText: "wow!",
           isDeleted: false,
         },
       ],

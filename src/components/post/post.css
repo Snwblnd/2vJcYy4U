@@ -1,30 +1,36 @@
 .post-content {
-  border: 1px solid red;
+  border-right: 1px solid #cccccc;
   width: 48rem;
   height: 48rem;
   padding: 1rem;
 }
 
 .post-container {
-  border: 1px solid green;
   display: flex;
+  border: 1px solid #cccccc;
+  background-color: white;
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 .comment-section {
-  border: 1px yellow solid;
   width: 32rem;
   padding: 1rem;
   display: flex;
   flex-flow: column;
   justify-content: start;
+  gap: 8px;
 }
 
 .comment {
   padding: 8px;
+  gap: 8px;
+  display: flex;
+  flex-flow: column;
 }
 
 .comments {
-  border: 1px solid orange;
   overflow-y: auto;
   flex-grow: 1;
   height: 0px;
@@ -34,28 +40,75 @@
   display: flex;
   flex-flow: column;
   gap: 16px;
+  padding-top: 16px;
 }
 
 .reply {
-  border: 1px solid gray;
+  border-left: 1px solid gray;
   padding-left: 1rem;
 }
 
 .comment-input {
-  border: 1px solid blue;
   margin-top: auto;
   display: flex;
   justify-content: flex-end;
+  gap: 1rem;
 }
 
 .submit-comment-button {
-  border-radius: 16px;
+  background: white;
+  border: 1px solid black;
+  padding: 4px 6px;
+  transition: ease-in-out 100ms;
+}
+
+.submit-comment-button:hover {
+  background: black;
+  color: white;
 }
 
 .reset-comments-button {
   background-color: red;
+  padding: 8px 10px;
+  color: white;
+  font-size: 1rem;
+  border: none;
+}
+.reset-comments-button:hover {
+  background-color: crimson;
 }
 
 .reply-field {
   margin-right: auto;
+  flex-grow: 1;
+  outline: none;
+  border: 1px solid gray;
+  height: 2rem;
+  border-radius: 4px;
+}
+
+.reply-field:focus {
+  border: 2px solid black;
+}
+
+.comment-button {
+  padding: 4px 6px;
+  background: white;
+  border: 1px solid black;
+  transition: ease-in-out 100ms;
+}
+
+.comment-button:hover {
+  background: black;
+  color: white;
+}
+
+.comment-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.deleted {
+  font-style: italic;
+  color: gray;
 }
