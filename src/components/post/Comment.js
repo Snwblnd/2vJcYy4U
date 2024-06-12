@@ -26,7 +26,7 @@ const Comment = ({ comment }) => {
         )}
       </div>
       <button onClick={() => deleteFunction(comment)}>Delete</button>
-      <button>Reply</button>
+      <button onClick={() => replyToComment(comment, "darude")}>Reply</button>
     </div>
   );
 };
@@ -53,11 +53,37 @@ const deleteFunction = (comment) => {
 
   singleComment.isDeleted = true;
 
+  updateComments(comments);
+};
+
+const updateComments = (comments) => {
   localStorage.removeItem("comments");
 
   localStorage.setItem("comments", JSON.stringify(comments));
 
   window.dispatchEvent(new CustomEvent("updateList"));
+};
+
+const replyToComment = (comment, reply) => {
+  const comments = JSON.parse(localStorage.getItem("comments"));
+  const idCounter = Number(localStorage.getItem("idCounter")) + 1;
+
+  const newComment = {
+    commentId: idCounter,
+    commentText: reply,
+    isDeleted: false,
+  };
+
+  const parentComment = findById(comments, comment.commentId);
+  if (parentComment) {
+    if (!parentComment.comments) {
+      parentComment.comments = [];
+    }
+    parentComment.comments.push(newComment);
+    updateComments(comments);
+    return true;
+  }
+  return false;
 };
 
 export default Comment;
