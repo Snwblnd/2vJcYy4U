@@ -43,4 +43,18 @@
 .comment-input {
   border: 1px solid blue;
   margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-comment-button {
+  border-radius: 16px;
+}
+
+.reset-comments-button {
+  background-color: red;
+}
+
+.reply-field {
+  margin-right: auto;
 }
