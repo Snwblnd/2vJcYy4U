@@ -48,6 +48,7 @@ export const replyToComment = (comment, reply) => {
     }
     parentComment.comments.push(newComment);
     updateComments(comments);
+    localStorage.setItem("idCounter", idCounter);
     return true;
   }
   return false;
@@ -65,6 +66,7 @@ export const commentInit = () => {
   if (ranOnce === "true") return;
 
   localStorage.removeItem("comments");
+  localStorage.removeItem("idCounter");
 
   const comments = [
     {
